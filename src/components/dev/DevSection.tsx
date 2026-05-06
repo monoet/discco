@@ -3,17 +3,26 @@ import DeviceMockup from './DeviceMockup';
 
 export default function DevSection() {
   return (
-    <section id="dev" className="bg-[var(--discco-charcoal)] py-[72px] md:py-[112px]">
-      <div className="max-w-content mx-auto px-5 md:px-12">
+    <section id="dev" className="discco-dark-grid relative overflow-hidden bg-[var(--discco-charcoal)] py-[72px] md:py-[112px]">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-12">
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-16 grid gap-6 border-y border-[rgba(251,247,239,0.14)] py-7 md:grid-cols-[auto_1fr_auto] md:items-end">
+          <div className="flex items-center gap-3">
+            <span className="font-display text-4xl text-[var(--discco-accent)]">02</span>
+            <span className="h-px w-12 bg-[var(--discco-accent)]" />
+          </div>
+          <div>
+            <span className="font-body text-[10px] uppercase tracking-[0.22em] text-[var(--discco-taupe)]">
+              Interfaces / sistemas / código
+            </span>
           <h2
-            className="font-display uppercase text-[var(--discco-bone)] mb-3"
+            className="font-display uppercase leading-[0.86] text-[var(--discco-bone)]"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 5rem)' }}
           >
             DISCCO.DEV
           </h2>
-          <p className="font-body text-[var(--discco-taupe)] text-lg">
+          </div>
+          <p className="max-w-[30ch] font-body text-lg leading-snug text-[var(--discco-taupe)]">
             Websites / menús digitales / experiencias web
           </p>
         </div>
@@ -26,10 +35,10 @@ export default function DevSection() {
             return (
               <div
                 key={showcase.id}
-                className={`flex flex-col gap-8 md:gap-12 md:flex-row md:items-center ${isEven ? 'md:flex-row-reverse' : ''}`}
+                className={`relative grid gap-8 rounded-[5px] border border-[rgba(251,247,239,0.13)] bg-[rgba(251,247,239,0.035)] p-5 md:grid-cols-[minmax(0,0.9fr)_auto] md:items-center md:gap-12 md:p-7 ${isEven ? 'md:grid-cols-[auto_minmax(0,0.9fr)]' : ''}`}
               >
                 {/* Text content */}
-                <div className="flex-1">
+                <div className={`${isEven ? 'md:order-2' : ''}`}>
                   <div className="space-y-4">
                     {/* Type label + status badge */}
                     <div className="flex items-center gap-3">
@@ -43,6 +52,7 @@ export default function DevSection() {
                     <h3 className="font-display uppercase text-[var(--discco-bone)]">
                       {showcase.title}
                     </h3>
+                    <span className="block h-[3px] w-16 bg-[var(--discco-accent)]" />
 
                     {/* Description */}
                     <p className="font-body text-sm text-[var(--discco-taupe)] leading-relaxed">
@@ -69,7 +79,7 @@ export default function DevSection() {
                           href={showcase.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest bg-[var(--discco-accent)] text-[var(--discco-ink)] px-6 py-3 rounded-lg hover:bg-[var(--discco-accent-dk)] transition-colors"
+                          className="inline-flex items-center gap-2 border border-[var(--discco-accent)] bg-[var(--discco-accent)] px-6 py-3 font-display text-xs uppercase tracking-[0.16em] text-[var(--discco-ink)] transition-colors hover:bg-[var(--discco-accent-dk)]"
                         >
                           Abrir sitio
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -82,7 +92,7 @@ export default function DevSection() {
                         <button
                           disabled
                           title="Demo próximamente"
-                          className="inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest bg-transparent text-[var(--discco-taupe)] border border-[var(--discco-taupe)] px-6 py-3 rounded-lg opacity-50 cursor-not-allowed"
+                          className="inline-flex cursor-not-allowed items-center gap-2 border border-[var(--discco-taupe)] bg-transparent px-6 py-3 font-display text-xs uppercase tracking-[0.16em] text-[var(--discco-taupe)] opacity-50"
                         >
                           Demo próximos
                         </button>
@@ -92,7 +102,7 @@ export default function DevSection() {
                 </div>
 
                 {/* Device Mockup */}
-                <div className="flex-shrink-0 flex justify-center">
+                <div className={`flex flex-shrink-0 justify-center ${isEven ? 'md:order-1' : ''}`}>
                   <DeviceMockup
                     device={showcase.device}
                     mockupType={showcase.mockupType}

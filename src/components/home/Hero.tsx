@@ -1,15 +1,21 @@
 import { departments, type Department } from '@/data/discco';
 
+const recordWaveBars = [
+  18, 28, 16, 34, 24, 42, 20, 30, 48, 22, 36, 26,
+  44, 18, 32, 46, 20, 40, 24, 35, 50, 28, 38, 21,
+  31, 45, 19, 34, 26, 42, 24, 36, 18, 30, 41, 22,
+];
+
 function DepartmentMotif({ id }: { id: Department['id'] }) {
   if (id === 'creativo') {
     return (
-      <div className="grid h-full min-h-[118px] grid-cols-3 grid-rows-2 gap-2">
-        <div className="relative col-span-1 row-span-1 bg-[var(--discco-ink)] p-2 text-[var(--discco-bone)]">
+      <div className="grid h-[132px] grid-cols-4 grid-rows-2 gap-2 overflow-hidden md:h-[138px]">
+        <div className="relative col-span-2 bg-[var(--discco-ink)] p-3 text-[var(--discco-bone)]">
           <span className="font-display text-lg uppercase leading-none">DISCCO!</span>
-          <span className="absolute bottom-2 right-2 text-[var(--discco-pink)]">✦</span>
+          <span className="absolute bottom-3 right-3 text-[var(--discco-pink)]">✦</span>
         </div>
         <div className="relative bg-[var(--discco-bone)] p-2 text-[var(--discco-ink)]">
-          <span className="block font-display text-[1.65rem] uppercase leading-[0.8]">No rules</span>
+          <span className="block font-display text-[1.7rem] uppercase leading-[0.82]">No rules</span>
           <span className="absolute right-2 top-2 h-6 w-1.5 bg-[var(--discco-pink)]" />
         </div>
         <div className="relative bg-[var(--discco-accent)]">
@@ -17,14 +23,14 @@ function DepartmentMotif({ id }: { id: Department['id'] }) {
           <span className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--discco-ink)]" />
           <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--discco-ink)]" />
         </div>
-        <div className="bg-[var(--discco-taupe)] opacity-70" />
-        <div className="relative bg-[var(--discco-charcoal)]">
-          <span className="absolute inset-4 rounded-full border border-[var(--discco-accent-dk)]" />
+        <div className="col-span-2 bg-[var(--discco-taupe)] opacity-70" />
+        <div className="relative col-span-1 bg-[var(--discco-charcoal)]">
+          <span className="absolute inset-3 rounded-full border border-[var(--discco-accent-dk)]" />
           <span className="absolute left-1/2 top-1/2 h-px w-12 -translate-x-1/2 bg-[var(--discco-accent)]" />
           <span className="absolute left-1/2 top-1/2 h-12 w-px -translate-y-1/2 bg-[var(--discco-accent)]" />
         </div>
         <div className="relative bg-[var(--discco-bone)] p-2">
-          <span className="block font-display text-xl uppercase leading-[0.8]">Make meaning</span>
+          <span className="block font-display text-xl uppercase leading-[0.82]">Make meaning</span>
           <span className="absolute bottom-2 right-2 text-lg text-[var(--discco-pink)]">×</span>
         </div>
       </div>
@@ -33,7 +39,7 @@ function DepartmentMotif({ id }: { id: Department['id'] }) {
 
   if (id === 'dev') {
     return (
-      <div className="h-full min-h-[124px] border border-[var(--discco-ink)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)]">
+      <div className="h-[132px] border border-[var(--discco-ink)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)] md:h-[138px]">
         <div className="flex h-7 items-center justify-between border-b border-[rgba(251,247,239,0.22)] px-3">
           <span className="font-display text-[10px] uppercase tracking-[0.12em]">DISCCO.DEV</span>
           <span className="flex gap-1">
@@ -42,7 +48,7 @@ function DepartmentMotif({ id }: { id: Department['id'] }) {
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-bone)]" />
           </span>
         </div>
-        <div className="grid grid-cols-[1fr_0.85fr] gap-3 p-4">
+        <div className="grid h-[calc(100%-1.75rem)] grid-cols-[1fr_1fr] gap-4 p-4">
           <div>
             <span className="block font-display text-2xl uppercase leading-[0.88]">
               Diseño que funciona.
@@ -52,9 +58,9 @@ function DepartmentMotif({ id }: { id: Department['id'] }) {
               Ver proyectos →
             </span>
           </div>
-          <div className="relative min-h-[82px] overflow-hidden border-l border-[rgba(251,247,239,0.25)]">
-            <span className="absolute left-1/2 top-1/2 h-16 w-28 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-[var(--discco-taupe)]" />
-            <span className="absolute left-1/2 top-1/2 h-px w-32 -translate-x-1/2 bg-[var(--discco-taupe)]" />
+          <div className="relative overflow-hidden border-l border-[rgba(251,247,239,0.25)]">
+            <span className="absolute left-1/2 top-1/2 h-16 w-32 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-[var(--discco-taupe)]" />
+            <span className="absolute left-1/2 top-1/2 h-px w-36 -translate-x-1/2 bg-[var(--discco-taupe)]" />
             <span className="absolute left-1/2 top-1/2 h-16 w-px -translate-y-1/2 bg-[var(--discco-taupe)]" />
             <span className="absolute inset-x-4 top-6 h-px bg-[var(--discco-taupe)] opacity-70" />
             <span className="absolute inset-x-4 bottom-6 h-px bg-[var(--discco-taupe)] opacity-70" />
@@ -66,18 +72,18 @@ function DepartmentMotif({ id }: { id: Department['id'] }) {
   }
 
   return (
-    <div className="h-full min-h-[124px] border border-[rgba(251,247,239,0.24)] bg-[rgba(20,17,15,0.36)] text-[var(--discco-bone)]">
+    <div className="h-[132px] border border-[rgba(251,247,239,0.24)] bg-[rgba(20,17,15,0.36)] text-[var(--discco-bone)] md:h-[138px]">
       <div className="flex h-8 items-center justify-between border-b border-[rgba(251,247,239,0.2)] px-3">
         <span className="font-display text-xs uppercase tracking-[0.2em]">A DISCCO! RECORDS</span>
         <span className="font-display text-[10px] uppercase tracking-[0.18em] text-[var(--discco-pink)]">Play loud</span>
       </div>
-      <div className="p-4">
-        <div className="flex h-10 items-center gap-1 border-b border-[rgba(251,247,239,0.14)] pb-3">
-          {[10, 18, 8, 24, 14, 30, 12, 22, 9, 26, 16, 20, 11, 28, 13, 18].map((height, index) => (
+      <div className="p-4 pt-3">
+        <div className="flex h-9 items-center gap-[3px] border-b border-[rgba(251,247,239,0.14)] pb-2" aria-hidden="true">
+          {recordWaveBars.map((height, index) => (
             <span
               key={index}
-              className="w-1 flex-1 bg-[var(--discco-bone)]"
-              style={{ height }}
+              className="discco-wave-bar w-[3px] flex-1 bg-[var(--discco-bone)]"
+              style={{ height, animationDelay: `${index * 34}ms` }}
             />
           ))}
         </div>
@@ -102,9 +108,9 @@ function DepartmentPanel({ department, index }: { department: Department; index:
     <a
       href={department.href}
       className={`
-        group relative grid min-h-[168px] overflow-hidden rounded-[5px] border p-5 transition duration-200
+        group relative grid min-h-[184px] overflow-hidden rounded-[5px] border p-5 transition duration-200
         hover:-translate-y-0.5 hover:border-[var(--discco-ink)]
-        md:min-h-[164px] md:grid-cols-[minmax(210px,0.82fr)_minmax(320px,1.38fr)] md:gap-7 md:p-5
+        md:min-h-[184px] md:grid-cols-[minmax(250px,0.8fr)_minmax(360px,1.4fr)] md:gap-7 md:p-6
         ${isDev ? 'border-[rgba(20,17,15,0.24)] bg-[var(--discco-accent-dk)] text-[var(--discco-ink)]' : ''}
         ${isRecords ? 'border-[rgba(251,247,239,0.18)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)]' : ''}
         ${!isDev && !isRecords ? 'border-[var(--discco-line)] bg-[var(--discco-bone)] text-[var(--discco-ink)]' : ''}
@@ -120,13 +126,13 @@ function DepartmentPanel({ department, index }: { department: Department; index:
         }}
       />
 
-      <div className="relative z-10 flex min-h-[124px] flex-col justify-between">
+      <div className="relative z-10 flex min-h-[136px] flex-col justify-between">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <span className={`font-display text-2xl leading-none ${isRecords ? 'text-[var(--discco-pink)]' : 'text-[var(--discco-accent-dk)]'}`}>
+            <span className={`font-display text-2xl leading-none ${isRecords ? 'text-[var(--discco-pink)]' : isDev ? 'text-[var(--discco-ink)]' : 'text-[var(--discco-accent-dk)]'}`}>
               {String(index + 1).padStart(2, '0')}
             </span>
-            <span className={`h-px w-9 ${isRecords ? 'bg-[var(--discco-pink)]' : 'bg-[var(--discco-accent-dk)]'}`} />
+            <span className={`h-px w-9 ${isRecords ? 'bg-[var(--discco-pink)]' : isDev ? 'bg-[var(--discco-ink)]' : 'bg-[var(--discco-accent-dk)]'}`} />
           </div>
           <h2
             className="font-display uppercase leading-[0.88] tracking-[-0.015em]"
@@ -134,7 +140,7 @@ function DepartmentPanel({ department, index }: { department: Department; index:
           >
             {department.name}
           </h2>
-          <span className={`mt-4 block h-[3px] w-14 ${isRecords ? 'bg-[var(--discco-pink)]' : 'bg-[var(--discco-bone)]'} ${!isDev && !isRecords ? 'bg-[var(--discco-pink)]' : ''}`} />
+          <span className={`mt-4 block h-[3px] w-16 ${isRecords ? 'bg-[var(--discco-pink)]' : isDev ? 'bg-[var(--discco-bone)]' : 'bg-[var(--discco-pink)]'}`} />
         </div>
         <p className={`mt-4 max-w-[26ch] font-body text-sm leading-snug md:text-[15px] ${isRecords ? 'text-[var(--discco-bone)]' : 'text-[var(--discco-ink)]'}`}>
           {department.tagline}
@@ -225,7 +231,7 @@ export default function Hero() {
 
             <div className="mt-8 hidden items-end justify-between md:flex">
               <div className="font-display text-[15px] uppercase leading-[0.95] tracking-[0.05em] text-[var(--discco-pink)]">
-                Keep<br />it<br />real
+                Signal<br />over<br />noise
                 <span className="mt-1 block h-[3px] w-10 -rotate-3 bg-[var(--discco-pink)]" />
               </div>
               <div className="text-right font-body text-[10px] uppercase tracking-[0.14em] text-[var(--discco-ink)]">

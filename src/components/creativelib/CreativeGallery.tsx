@@ -4,36 +4,51 @@ import TagPill from '@/components/ui/TagPill';
 
 function BrandedPlaceholder({ title, category }: { title: string; category: string }) {
   return (
-    <div className="absolute inset-0 bg-[var(--discco-charcoal)] flex flex-col items-center justify-center p-6 text-center">
-      {/* Large typographic composition */}
+    <div className="discco-dark-grid absolute inset-0 flex flex-col justify-between bg-[var(--discco-charcoal)] p-5">
+      <div className="flex items-center justify-between">
+        <span className="font-display text-[10px] uppercase tracking-[0.18em] text-[var(--discco-accent)]">
+          DISCCO! CREATIVO
+        </span>
+        <span className="text-[var(--discco-pink)]">✦</span>
+      </div>
       <span
-        className="font-display uppercase text-[var(--discco-bone)] leading-none mb-3"
-        style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}
+        className="font-display uppercase text-[var(--discco-bone)] leading-[0.86]"
+        style={{ fontSize: 'clamp(2rem, 5vw, 3.4rem)' }}
       >
         {title}
       </span>
-      <span className="font-body text-xs uppercase tracking-widest text-[var(--discco-taupe)]">
-        {category}
-      </span>
-      {/* Decorative accent line */}
-      <div className="mt-4 w-12 h-[2px] bg-[var(--discco-accent)]" />
+      <div>
+        <div className="mb-3 h-[3px] w-16 bg-[var(--discco-pink)]" />
+        <span className="font-body text-xs uppercase tracking-widest text-[var(--discco-taupe)]">
+          {category}
+        </span>
+      </div>
     </div>
   );
 }
 
 export default function CreativeGallery() {
   return (
-    <section id="creativo" className="bg-[var(--discco-paper)] py-[72px] md:py-[112px]">
-      <div className="max-w-content mx-auto px-5 md:px-12">
+    <section id="creativo" className="discco-section-grid relative overflow-hidden bg-[var(--discco-paper)] py-[72px] md:py-[112px]">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-12">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-12 grid gap-6 border-y border-[var(--discco-line)] py-7 md:grid-cols-[auto_1fr_auto] md:items-end">
+          <div className="flex items-center gap-3">
+            <span className="font-display text-4xl text-[var(--discco-accent-dk)]">01</span>
+            <span className="h-px w-12 bg-[var(--discco-accent-dk)]" />
+          </div>
+          <div>
+            <span className="font-body text-[10px] uppercase tracking-[0.22em] text-[var(--discco-taupe)]">
+              Branding / editorial / visual systems
+            </span>
           <h2
-            className="font-display uppercase text-[var(--discco-ink)] mb-3"
+            className="font-display uppercase leading-[0.86] text-[var(--discco-ink)]"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 5rem)' }}
           >
             DISCCO! CREATIVO
           </h2>
-          <p className="font-body text-[var(--discco-taupe)] text-lg">
+          </div>
+          <p className="max-w-[30ch] font-body text-lg leading-snug text-[var(--discco-taupe)]">
             Branding / diseño / dirección visual
           </p>
         </div>
@@ -53,10 +68,10 @@ export default function CreativeGallery() {
                   ${isFeatured ? 'md:col-span-6' : 'md:col-span-3'}
                   ${isEven ? '' : 'md:col-start-8'}
                   bg-[var(--discco-bone)] border border-[var(--discco-line)]
-                  rounded-lg overflow-hidden
+                  rounded-[5px] overflow-hidden
                   transition-all duration-200
-                  hover:-translate-y-1 hover:shadow-lg
-                  hover:border-l-4 hover:border-l-[var(--discco-accent)]
+                  hover:-translate-y-1
+                  hover:border-[var(--discco-ink)]
                 `}
               >
                 {/* Image or branded placeholder */}
@@ -80,7 +95,7 @@ export default function CreativeGallery() {
                 </div>
 
                 {/* Content */}
-                <div className="p-5">
+                <div className="border-t border-[var(--discco-line)] p-5">
                   {/* Category */}
                   <p className="font-body text-[11px] uppercase tracking-widest text-[var(--discco-taupe)] mb-2">
                     {project.category}

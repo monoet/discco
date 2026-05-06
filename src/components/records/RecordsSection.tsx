@@ -5,7 +5,7 @@ import TestimonialCard from './TestimonialCard';
 
 export default function RecordsSection() {
   return (
-    <section id="records" className="relative bg-[var(--discco-charcoal)] overflow-hidden">
+    <section id="records" className="discco-dark-grid relative overflow-hidden bg-[var(--discco-charcoal)]">
       {/* Grain texture overlay — darker */}
       <div
         aria-hidden="true"
@@ -17,22 +17,34 @@ export default function RecordsSection() {
         }}
       />
 
-      <div className="relative z-20 max-w-content mx-auto px-5 md:px-12 py-[72px] md:py-[112px]">
+      <div className="relative z-20 mx-auto max-w-[1400px] px-5 py-[72px] md:px-12 md:py-[112px]">
         {/* Title + subtitle */}
-        <div className="mb-16">
+        <div className="mb-16 grid gap-6 border-y border-[rgba(251,247,239,0.14)] py-7 md:grid-cols-[auto_1fr_auto] md:items-end">
+          <div className="flex items-center gap-3">
+            <span className="font-display text-4xl text-[var(--discco-pink)]">03</span>
+            <span className="h-px w-12 bg-[var(--discco-pink)]" />
+          </div>
+          <div>
+            <span className="font-body text-[10px] uppercase tracking-[0.22em] text-[var(--discco-taupe)]">
+              Audio / canciones / identidad sonora
+            </span>
           <h2
-            className="font-display uppercase text-[var(--discco-bone)] mb-3"
+            className="font-display uppercase leading-[0.86] text-[var(--discco-bone)]"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 5rem)' }}
           >
             DISCCO! RECORDS
           </h2>
-          <p className="font-body text-[var(--discco-taupe)] text-lg">
+          </div>
+          <p className="max-w-[30ch] font-body text-lg leading-snug text-[var(--discco-taupe)]">
             Estudio / música / audio / producción
           </p>
         </div>
 
         {/* Player */}
-        <RecordsPlayer />
+        <div className="relative mx-auto max-w-[760px]">
+          <span aria-hidden="true" className="absolute -right-4 -top-4 hidden h-16 w-8 rotate-[-24deg] bg-[rgba(251,247,239,0.22)] md:block" />
+          <RecordsPlayer />
+        </div>
 
         {/* Services grid: 2/3/4 cols */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
@@ -42,8 +54,8 @@ export default function RecordsSection() {
         </div>
 
         {/* About block */}
-        <div className="mb-16 max-w-2xl">
-          <h3 className="font-display uppercase text-[var(--discco-bone)] text-xl mb-4">
+        <div className="mb-16 max-w-2xl border-l border-[var(--discco-pink)] pl-5">
+          <h3 className="mb-4 font-display text-xl uppercase text-[var(--discco-bone)]">
             Sobre el estudio
           </h3>
           <p className="font-body text-[var(--discco-bone)] leading-relaxed opacity-80">
@@ -53,7 +65,7 @@ export default function RecordsSection() {
 
         {/* Testimonials: 3-col grid */}
         <div>
-          <h3 className="font-display uppercase text-[var(--discco-bone)] text-xl mb-6">
+          <h3 className="mb-6 font-display text-xl uppercase text-[var(--discco-bone)]">
             Lo que dicen
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

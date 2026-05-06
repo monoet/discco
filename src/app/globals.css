@@ -146,3 +146,44 @@ a {
 .vertical-rl {
   writing-mode: vertical-rl;
 }
+
+.discco-section-grid::before,
+.discco-dark-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, currentColor 1px, transparent 1px),
+    linear-gradient(0deg, currentColor 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.discco-section-grid::before {
+  color: rgba(20, 17, 15, 0.075);
+}
+
+.discco-dark-grid::before {
+  color: rgba(251, 247, 239, 0.075);
+}
+
+.discco-wave-bar {
+  transform-origin: center;
+}
+
+@keyframes discco-wave {
+  0%, 100% {
+    transform: scaleY(0.35);
+    opacity: 0.58;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .discco-wave-bar {
+    animation: discco-wave 0.72s ease-in-out infinite alternate;
+  }
+}

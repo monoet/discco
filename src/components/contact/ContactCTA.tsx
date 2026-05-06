@@ -4,12 +4,19 @@ export default function ContactCTA() {
   const waHref = waConfigured ? `https://wa.me/${waNumber}` : null;
 
   return (
-    <section id="contacto" className="bg-[var(--discco-charcoal)] py-[72px] md:py-[112px]">
-      <div className="max-w-content mx-auto px-5 md:px-12">
-        <div className="max-w-2xl mx-auto text-center">
+    <section id="contacto" className="discco-dark-grid relative overflow-hidden bg-[var(--discco-charcoal)] py-[72px] md:py-[112px]">
+      <div className="relative z-10 mx-auto max-w-[1200px] px-5 md:px-12">
+        <div className="mx-auto max-w-4xl rounded-[5px] border border-[rgba(251,247,239,0.14)] bg-[rgba(251,247,239,0.035)] p-7 text-center md:p-10">
+          <div className="mb-5 flex items-center justify-center gap-3">
+            <span className="font-display text-2xl text-[var(--discco-accent)]">04</span>
+            <span className="h-px w-12 bg-[var(--discco-accent)]" />
+            <span className="font-body text-[10px] uppercase tracking-[0.22em] text-[var(--discco-taupe)]">
+              contacto
+            </span>
+          </div>
           {/* Headline */}
           <h2
-            className="font-display uppercase text-[var(--discco-bone)] mb-4"
+            className="mb-4 font-display uppercase leading-[0.9] text-[var(--discco-bone)]"
             style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
           >
             ¿Armamos algo para tu proyecto?
@@ -28,7 +35,7 @@ export default function ContactCTA() {
                 href={waHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 font-body text-sm uppercase tracking-widest bg-[var(--discco-accent)] text-[var(--discco-ink)] px-8 py-4 rounded-lg hover:bg-[var(--discco-accent-dk)] transition-colors"
+                className="inline-flex items-center justify-center gap-2 border border-[var(--discco-accent)] bg-[var(--discco-accent)] px-8 py-4 font-display text-sm uppercase tracking-[0.16em] text-[var(--discco-ink)] transition-colors hover:bg-[var(--discco-accent-dk)]"
               >
                 <WhatsAppIcon />
                 Escribir por WhatsApp
@@ -37,7 +44,7 @@ export default function ContactCTA() {
               <button
                 disabled
                 title="WhatsApp no configurado todavía"
-                className="inline-flex items-center justify-center gap-2 font-body text-sm uppercase tracking-widest bg-[var(--discco-taupe)] text-[var(--discco-bone)] px-8 py-4 rounded-lg opacity-50 cursor-not-allowed"
+                className="inline-flex cursor-not-allowed items-center justify-center gap-2 border border-[var(--discco-taupe)] bg-[var(--discco-taupe)] px-8 py-4 font-display text-sm uppercase tracking-[0.16em] text-[var(--discco-bone)] opacity-50"
               >
                 <WhatsAppIcon />
                 Escribir por WhatsApp
@@ -47,7 +54,7 @@ export default function ContactCTA() {
             {/* Secondary: scroll to creatvo */}
             <a
               href="#creativo"
-              className="inline-flex items-center justify-center gap-2 font-body text-sm uppercase tracking-widest border border-[var(--discco-taupe)] text-[var(--discco-bone)] px-8 py-4 rounded-lg hover:border-[var(--discco-bone)] hover:bg-[rgba(255,255,255,0.05)] transition-colors"
+              className="inline-flex items-center justify-center gap-2 border border-[var(--discco-taupe)] px-8 py-4 font-display text-sm uppercase tracking-[0.16em] text-[var(--discco-bone)] transition-colors hover:border-[var(--discco-bone)] hover:bg-[rgba(255,255,255,0.05)]"
             >
               Ver servicios
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

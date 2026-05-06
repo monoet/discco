@@ -71,11 +71,15 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ label, icon }: ServiceCardProps) {
   return (
-    <div className="group bg-[var(--discco-charcoal)] border border-[rgba(255,255,255,0.08)] rounded-lg p-4 transition-all duration-200 hover:border-[var(--discco-accent)] hover:shadow-[0_0_0_1px_var(--discco-accent)]">
-      <div className="text-[var(--discco-taupe)] mb-2 transition-colors group-hover:text-[var(--discco-accent)]">
+    <div className="group relative min-h-28 overflow-hidden rounded-[5px] border border-[rgba(255,255,255,0.1)] bg-[rgba(251,247,239,0.035)] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--discco-accent)]">
+      <span aria-hidden="true" className="absolute right-3 top-3 font-display text-[10px] uppercase tracking-[0.2em] text-[rgba(251,247,239,0.2)]">
+        REC
+      </span>
+      <div className="mb-4 text-[var(--discco-taupe)] transition-colors group-hover:text-[var(--discco-accent)]">
         {icons[icon]}
       </div>
-      <p className="font-body text-sm text-[var(--discco-bone)]">{label}</p>
+      <p className="font-display text-base uppercase leading-tight text-[var(--discco-bone)]">{label}</p>
+      <span className="mt-3 block h-px w-10 bg-[var(--discco-pink)] opacity-0 transition-opacity group-hover:opacity-100" />
     </div>
   );
 }
