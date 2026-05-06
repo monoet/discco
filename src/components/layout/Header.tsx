@@ -4,6 +4,12 @@ import { useState, useEffect, useRef } from 'react';
 import { departments } from '@/data/discco';
 import MobileMenu from './MobileMenu';
 
+const navLabels = {
+  creativo: 'CREATIVO',
+  dev: 'DEV',
+  records: 'RECORDS',
+} as const;
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -42,38 +48,40 @@ export default function Header() {
     <>
       <header
         className={`
-          sticky top-0 z-50 transition-colors duration-200
+          sticky top-0 z-50 border-b border-[var(--discco-line)] transition-colors duration-200
           h-14 md:h-16
-          bg-[color-mix(in_srgb,var(--discco-paper)_95%,transparent)]
+          bg-[color-mix(in_srgb,var(--discco-paper)_96%,transparent)]
           backdrop-blur-[8px]
-          ${isScrolled ? 'border-b border-[var(--discco-line)]' : ''}
+          ${isScrolled ? 'shadow-[0_1px_0_rgba(20,17,15,0.05)]' : ''}
         `}
       >
         <div className="max-w-content mx-auto px-4 md:px-6 h-full flex items-center justify-between">
           {/* Logo */}
           <a
             href="#"
-            className="font-display text-xl md:text-2xl tracking-wide text-[var(--discco-ink)]"
+            className="font-display text-xl md:text-2xl tracking-[0.02em] text-[var(--discco-ink)]"
           >
             DISCCO!
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-9">
             {departments.map((dept) => (
               <a
                 key={dept.id}
                 href={dept.href}
-                className="font-display text-xs uppercase tracking-widest text-[var(--discco-ink)] hover:text-[var(--discco-coffee)] transition-colors"
+                className="group relative font-display text-xs uppercase tracking-[0.18em] text-[var(--discco-ink)] transition-colors hover:text-[var(--discco-accent-dk)]"
               >
-                {dept.name.split(' ').slice(1).join(' ')}
+                {navLabels[dept.id]}
+                <span className="absolute -bottom-2 left-0 h-px w-0 bg-[var(--discco-pink)] transition-all duration-200 group-hover:w-full" />
               </a>
             ))}
             <a
               href="#contacto"
-              className="font-display text-xs uppercase tracking-widest text-[var(--discco-ink)] hover:text-[var(--discco-coffee)] transition-colors"
+              className="group relative font-display text-xs uppercase tracking-[0.18em] text-[var(--discco-ink)] transition-colors hover:text-[var(--discco-accent-dk)]"
             >
-              Contacto
+              CONTACTO
+              <span className="absolute -bottom-2 left-0 h-px w-0 bg-[var(--discco-pink)] transition-all duration-200 group-hover:w-full" />
             </a>
           </nav>
 

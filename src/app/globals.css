@@ -102,3 +102,47 @@ a {
   background-color: var(--discco-accent);
   color: var(--discco-ink);
 }
+
+/* ============================================
+   Editorial Hero Utilities
+   ============================================ */
+
+.discco-hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image:
+    radial-gradient(circle at 18% 24%, rgba(20, 17, 15, 0.09) 0 1px, transparent 1.4px),
+    radial-gradient(circle at 74% 62%, rgba(20, 17, 15, 0.08) 0 1px, transparent 1.3px),
+    linear-gradient(90deg, rgba(20, 17, 15, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(20, 17, 15, 0.03) 1px, transparent 1px);
+  background-size: 13px 13px, 19px 19px, 96px 96px, 96px 96px;
+  mix-blend-mode: multiply;
+}
+
+.discco-hero-title {
+  text-shadow: 0.018em 0.018em 0 rgba(20, 17, 15, 0.08);
+}
+
+.discco-hero-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    radial-gradient(circle, var(--discco-paper) 0 1px, transparent 1.5px),
+    linear-gradient(0deg, transparent 0 46%, rgba(244, 239, 229, 0.5) 48% 52%, transparent 54%);
+  background-size: 12px 12px, 100% 17px;
+  mix-blend-mode: screen;
+}
+
+.discco-brush-stroke {
+  clip-path: polygon(0 38%, 8% 25%, 24% 28%, 45% 18%, 70% 27%, 100% 20%, 98% 58%, 78% 66%, 51% 54%, 29% 70%, 10% 57%, 0 70%);
+}
+
+.vertical-rl {
+  writing-mode: vertical-rl;
+}

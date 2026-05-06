@@ -1,87 +1,243 @@
-import { departments } from '@/data/discco';
+import { departments, type Department } from '@/data/discco';
 
-export default function Hero() {
+function DepartmentMotif({ id }: { id: Department['id'] }) {
+  if (id === 'creativo') {
+    return (
+      <div className="grid h-full min-h-[118px] grid-cols-3 grid-rows-2 gap-2">
+        <div className="relative col-span-1 row-span-1 bg-[var(--discco-ink)] p-2 text-[var(--discco-bone)]">
+          <span className="font-display text-lg uppercase leading-none">DISCCO!</span>
+          <span className="absolute bottom-2 right-2 text-[var(--discco-pink)]">✦</span>
+        </div>
+        <div className="relative bg-[var(--discco-bone)] p-2 text-[var(--discco-ink)]">
+          <span className="block font-display text-[1.65rem] uppercase leading-[0.8]">No rules</span>
+          <span className="absolute right-2 top-2 h-6 w-1.5 bg-[var(--discco-pink)]" />
+        </div>
+        <div className="relative bg-[var(--discco-accent)]">
+          <span className="absolute inset-x-4 top-1/2 h-px bg-[var(--discco-ink)]" />
+          <span className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--discco-ink)]" />
+          <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--discco-ink)]" />
+        </div>
+        <div className="bg-[var(--discco-taupe)] opacity-70" />
+        <div className="relative bg-[var(--discco-charcoal)]">
+          <span className="absolute inset-4 rounded-full border border-[var(--discco-accent-dk)]" />
+          <span className="absolute left-1/2 top-1/2 h-px w-12 -translate-x-1/2 bg-[var(--discco-accent)]" />
+          <span className="absolute left-1/2 top-1/2 h-12 w-px -translate-y-1/2 bg-[var(--discco-accent)]" />
+        </div>
+        <div className="relative bg-[var(--discco-bone)] p-2">
+          <span className="block font-display text-xl uppercase leading-[0.8]">Make meaning</span>
+          <span className="absolute bottom-2 right-2 text-lg text-[var(--discco-pink)]">×</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (id === 'dev') {
+    return (
+      <div className="h-full min-h-[124px] border border-[var(--discco-ink)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)]">
+        <div className="flex h-7 items-center justify-between border-b border-[rgba(251,247,239,0.22)] px-3">
+          <span className="font-display text-[10px] uppercase tracking-[0.12em]">DISCCO.DEV</span>
+          <span className="flex gap-1">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-accent)]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-taupe)]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-bone)]" />
+          </span>
+        </div>
+        <div className="grid grid-cols-[1fr_0.85fr] gap-3 p-4">
+          <div>
+            <span className="block font-display text-2xl uppercase leading-[0.88]">
+              Diseño que funciona.
+            </span>
+            <span className="mt-3 block h-1.5 w-24 bg-[var(--discco-accent)]" />
+            <span className="mt-4 block font-display text-[10px] uppercase tracking-[0.18em]">
+              Ver proyectos →
+            </span>
+          </div>
+          <div className="relative min-h-[82px] overflow-hidden border-l border-[rgba(251,247,239,0.25)]">
+            <span className="absolute left-1/2 top-1/2 h-16 w-28 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-[var(--discco-taupe)]" />
+            <span className="absolute left-1/2 top-1/2 h-px w-32 -translate-x-1/2 bg-[var(--discco-taupe)]" />
+            <span className="absolute left-1/2 top-1/2 h-16 w-px -translate-y-1/2 bg-[var(--discco-taupe)]" />
+            <span className="absolute inset-x-4 top-6 h-px bg-[var(--discco-taupe)] opacity-70" />
+            <span className="absolute inset-x-4 bottom-6 h-px bg-[var(--discco-taupe)] opacity-70" />
+            <span className="absolute right-2 top-1 font-display text-lg text-[var(--discco-accent)]">&lt;/&gt;</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <section className="relative bg-[var(--discco-paper)] overflow-hidden">
-      {/* Grain texture */}
-      <div
+    <div className="h-full min-h-[124px] border border-[rgba(251,247,239,0.24)] bg-[rgba(20,17,15,0.36)] text-[var(--discco-bone)]">
+      <div className="flex h-8 items-center justify-between border-b border-[rgba(251,247,239,0.2)] px-3">
+        <span className="font-display text-xs uppercase tracking-[0.2em]">A DISCCO! RECORDS</span>
+        <span className="font-display text-[10px] uppercase tracking-[0.18em] text-[var(--discco-pink)]">Play loud</span>
+      </div>
+      <div className="p-4">
+        <div className="flex h-10 items-center gap-1 border-b border-[rgba(251,247,239,0.14)] pb-3">
+          {[10, 18, 8, 24, 14, 30, 12, 22, 9, 26, 16, 20, 11, 28, 13, 18].map((height, index) => (
+            <span
+              key={index}
+              className="w-1 flex-1 bg-[var(--discco-bone)]"
+              style={{ height }}
+            />
+          ))}
+        </div>
+        <div className="mt-3 grid grid-cols-[1fr_auto] gap-x-4 gap-y-1 font-body text-[10px] uppercase tracking-[0.08em]">
+          <span><span className="mr-2 text-[var(--discco-accent)]">1</span>Intro</span>
+          <span className="text-[var(--discco-accent)]">01:12</span>
+          <span><span className="mr-2 text-[var(--discco-accent)]">2</span>Frecuencia creativa</span>
+          <span className="text-[var(--discco-accent)]">03:45</span>
+          <span><span className="mr-2 text-[var(--discco-accent)]">3</span>Ruido y propósito</span>
+          <span className="text-[var(--discco-accent)]">02:57</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DepartmentPanel({ department, index }: { department: Department; index: number }) {
+  const isDev = department.id === 'dev';
+  const isRecords = department.id === 'records';
+
+  return (
+    <a
+      href={department.href}
+      className={`
+        group relative grid min-h-[178px] overflow-hidden rounded-[5px] border p-5 transition duration-200
+        hover:-translate-y-0.5 hover:border-[var(--discco-ink)]
+        md:min-h-[188px] md:grid-cols-[0.85fr_1.15fr] md:gap-5 md:p-6
+        ${isDev ? 'border-[rgba(20,17,15,0.24)] bg-[var(--discco-accent-dk)] text-[var(--discco-ink)]' : ''}
+        ${isRecords ? 'border-[rgba(251,247,239,0.18)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)]' : ''}
+        ${!isDev && !isRecords ? 'border-[var(--discco-line)] bg-[var(--discco-bone)] text-[var(--discco-ink)]' : ''}
+      `}
+    >
+      <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 opacity-[0.03]"
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '200px 200px',
+          backgroundImage:
+            'linear-gradient(90deg, currentColor 1px, transparent 1px), linear-gradient(0deg, currentColor 1px, transparent 1px)',
+          backgroundSize: '52px 52px',
         }}
       />
 
-      <div className="relative z-20 max-w-content mx-auto px-5 md:px-12 pt-16 md:pt-24 pb-20 md:pb-32">
-        <div className="grid grid-cols-12 gap-8 items-center">
-          {/* Left: Text block */}
-          <div className="col-span-12 md:col-span-7">
-            {/* Brand name */}
+      <div className="relative z-10 flex min-h-[132px] flex-col justify-between">
+        <div>
+          <div className="mb-5 flex items-center gap-3">
+            <span className={`font-display text-2xl leading-none ${isRecords ? 'text-[var(--discco-pink)]' : 'text-[var(--discco-accent-dk)]'}`}>
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span className={`h-px w-9 ${isRecords ? 'bg-[var(--discco-pink)]' : 'bg-[var(--discco-accent-dk)]'}`} />
+          </div>
+          <h2
+            className="font-display uppercase leading-[0.88] tracking-[-0.015em]"
+            style={{ fontSize: 'clamp(2.05rem, 4vw, 3.2rem)' }}
+          >
+            {department.name}
+          </h2>
+          <span className={`mt-4 block h-[3px] w-14 ${isRecords ? 'bg-[var(--discco-pink)]' : 'bg-[var(--discco-bone)]'} ${!isDev && !isRecords ? 'bg-[var(--discco-pink)]' : ''}`} />
+        </div>
+        <p className={`mt-5 max-w-[24ch] font-body text-sm leading-snug md:text-[15px] ${isRecords ? 'text-[var(--discco-bone)]' : 'text-[var(--discco-ink)]'}`}>
+          {department.tagline}
+        </p>
+      </div>
+
+      <div className="relative z-10 mt-5 md:mt-0">
+        <DepartmentMotif id={department.id} />
+      </div>
+    </a>
+  );
+}
+
+export default function Hero() {
+  return (
+    <section className="discco-hero-bg relative overflow-hidden bg-[var(--discco-paper)]">
+      <div aria-hidden="true" className="pointer-events-none absolute left-6 top-24 hidden h-[64%] md:block">
+        <div className="flex h-full flex-col items-center justify-between">
+          <span className="h-8 w-px bg-[var(--discco-line)]" />
+          <p className="vertical-rl rotate-180 font-body text-[11px] uppercase tracking-[0.26em] text-[var(--discco-ink)]">
+            Identidad • Diseño • Código • Sonido
+          </p>
+          <span className="h-8 w-px bg-[var(--discco-line)]" />
+        </div>
+      </div>
+
+      <span aria-hidden="true" className="absolute left-[3.2rem] top-[5.5rem] hidden h-8 w-8 rounded-full border border-[var(--discco-ink)] md:block">
+        <span className="absolute left-1/2 top-[-0.55rem] h-[3rem] w-px -translate-x-1/2 bg-[var(--discco-ink)] opacity-60" />
+        <span className="absolute left-[-0.55rem] top-1/2 h-px w-[3rem] -translate-y-1/2 bg-[var(--discco-ink)] opacity-60" />
+      </span>
+      <span aria-hidden="true" className="absolute right-[43%] top-20 hidden h-16 w-px bg-[var(--discco-ink)] md:block" />
+      <span aria-hidden="true" className="absolute right-[42.1%] top-[5.9rem] hidden h-px w-16 bg-[var(--discco-ink)] md:block" />
+
+      <div className="relative z-10 mx-auto max-w-content px-5 pb-14 pt-12 md:px-12 md:pb-14 md:pt-16">
+        <div className="grid items-center gap-8 md:min-h-[calc(100svh-4rem)] md:grid-cols-[minmax(0,0.58fr)_minmax(360px,0.42fr)] md:gap-10">
+          <div className="relative">
+            <div className="mb-8 hidden items-center gap-4 md:flex">
+              <span className="font-display text-xs uppercase tracking-[0.18em]">EST. 2016</span>
+              <span className="h-px w-24 bg-[var(--discco-line)]" />
+              <span className="h-1 w-1 rounded-full bg-[var(--discco-ink)]" />
+            </div>
+
             <h1
-              className="font-display uppercase leading-[0.9] text-[var(--discco-ink)] mb-6"
-              style={{ fontSize: 'clamp(4rem, 14vw, 11rem)' }}
+              className="discco-hero-title relative font-display uppercase leading-[0.82] text-[var(--discco-ink)]"
+              style={{ fontSize: 'clamp(6rem, 16vw, 14rem)', letterSpacing: '-0.04em' }}
             >
               DISCCO!
             </h1>
+            <span aria-hidden="true" className="discco-brush-stroke mt-1 block h-5 w-[82%] bg-[var(--discco-ink)]" />
 
-            {/* Slogan + animated underline */}
-            <div className="mb-6">
-              <span
-                className="font-display uppercase text-[var(--discco-accent)] relative inline-block"
-                style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
+            <div className="relative mt-5 inline-block">
+              <p
+                className="font-display lowercase leading-none text-[var(--discco-ink)]"
+                style={{ fontSize: 'clamp(2.2rem, 5vw, 4.5rem)' }}
               >
                 conexión creativa
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-[-6px] left-0 h-[3px] w-full bg-[var(--discco-acid)] origin-left"
-                />
-              </span>
+              </p>
+              <span aria-hidden="true" className="absolute -bottom-3 left-1 h-[5px] w-[42%] -rotate-1 rounded-full bg-[var(--discco-accent-dk)]" />
+              <span aria-hidden="true" className="absolute -right-14 top-4 hidden text-5xl leading-none text-[var(--discco-accent-dk)] md:block">✦</span>
             </div>
 
-            {/* Headline copy */}
-            <p
-              className="font-body text-[var(--discco-ink)] mb-4 leading-relaxed"
-              style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', maxWidth: '36ch' }}
-            >
-              Diseño, websites y música bajo una misma frecuencia creativa.
-            </p>
+            <div className="mt-8 max-w-[580px]">
+              <p
+                className="font-body font-semibold leading-tight text-[var(--discco-ink)]"
+                style={{ fontSize: 'clamp(1.2rem, 2.2vw, 1.55rem)' }}
+              >
+                Diseño, websites y música bajo una misma frecuencia creativa.
+              </p>
+              <p className="mt-4 max-w-[520px] font-body text-base leading-relaxed text-[var(--discco-taupe)] md:text-lg">
+                Creamos marcas, experiencias digitales y producción con identidad.
+              </p>
+            </div>
 
-            {/* Sub-copy */}
-            <p
-              className="font-body text-[var(--discco-taupe)] leading-relaxed"
-              style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1.0625rem)', maxWidth: '44ch' }}
-            >
-              Creamos identidades, experiencias digitales y producción audiovisual para negocios, artistas y proyectos con personalidad.
-            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#creativo"
+                className="inline-flex min-h-14 items-center justify-center gap-4 border border-[var(--discco-ink)] bg-[var(--discco-ink)] px-7 font-display text-sm uppercase tracking-[0.14em] text-[var(--discco-bone)] transition hover:bg-[var(--discco-charcoal)]"
+              >
+                Ver proyectos <span className="text-xl leading-none text-[var(--discco-accent)]">↗</span>
+              </a>
+              <a
+                href="#dev"
+                className="inline-flex min-h-14 items-center justify-center gap-4 border border-[var(--discco-ink)] bg-transparent px-7 font-display text-sm uppercase tracking-[0.14em] text-[var(--discco-ink)] transition hover:bg-[var(--discco-bone)]"
+              >
+                Explorar ramas <span className="text-xl leading-none text-[var(--discco-accent-dk)]">↗</span>
+              </a>
+            </div>
 
-            {/* Hot-pink micro accent — small star SVG */}
-            <div className="mt-8" aria-hidden="true">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="var(--discco-pink)">
-                <path d="M6 0L7.5 4.5L12 6L7.5 7.5L6 12L4.5 7.5L0 6L4.5 4.5L6 0Z" />
-              </svg>
+            <div className="mt-8 hidden items-end justify-between md:flex">
+              <div className="font-display text-[15px] uppercase leading-[0.95] tracking-[0.05em] text-[var(--discco-pink)]">
+                Keep<br />it<br />real
+                <span className="mt-1 block h-[3px] w-10 -rotate-3 bg-[var(--discco-pink)]" />
+              </div>
+              <div className="text-right font-body text-[10px] uppercase tracking-[0.14em] text-[var(--discco-ink)]">
+                DISCCO!™<br />
+                <span className="text-[8px] text-[var(--discco-taupe)]">Conexión creativa</span>
+              </div>
             </div>
           </div>
 
-          {/* Right: Department cards */}
-          <div className="col-span-12 md:col-span-5 flex flex-col gap-4">
-            {departments.map((dept) => (
-              <a
-                key={dept.id}
-                href={dept.href}
-                className="group block bg-[var(--discco-bone)] border border-[var(--discco-line)] rounded-lg p-5 transition-all duration-200 hover:translate-y-[-3px] hover:shadow-lg hover:border-l-4 hover:border-l-[var(--discco-accent)]"
-              >
-                <h2
-                  className="font-display uppercase text-[var(--discco-ink)] mb-1 transition-colors duration-200"
-                  style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)' }}
-                >
-                  {dept.name}
-                </h2>
-                <p className="font-body text-xs text-[var(--discco-taupe)]">
-                  {dept.tagline}
-                </p>
-              </a>
+          <div className="flex flex-col gap-4 md:gap-5">
+            {departments.map((department, index) => (
+              <DepartmentPanel key={department.id} department={department} index={index} />
             ))}
           </div>
         </div>
