@@ -165,7 +165,9 @@ All header nav links scroll to these IDs:
 | Height | 56px | 64px |
 | Nav items | Hamburger → dropdown panel | Inline: Creativo · Dev · Records · Contacto |
 | Behavior | Sticky top: 0; slide-down panel | Sticky top: 0; border-bottom on scroll |
-| Background | `rgba(--discco-paper, 0.95)` + `backdrop-filter: blur(8px)` | Same |
+| Background | `background: color-mix(in srgb, var(--discco-paper) 95%, transparent);` + `backdrop-filter: blur(8px);` |
+
+> **CSS syntax rule**: Never use `rgba(--hex-variable, alpha)` — that is invalid CSS because hex variables are not RGB channel values. Use Option B (`color-mix`) if backdrop transparency is needed, or Option A (`var(--discco-paper)`) for solid background. Option C (RGB variables) is valid but adds an extra variable to maintain. Same |
 | Mobile menu | Simple dropdown panel, NOT fullscreen | — |
 | Hamburger behavior | Closes after clicking any nav item | — |
 
@@ -193,10 +195,10 @@ All header nav links scroll to these IDs:
 ### 4.1 Hero Section
 
 **Content:**
-- Brand name: `DISCCO!` (52px Oswald uppercase)
-- Slogan: `conexión creativa` (accent green, Oswald regular — NOT italic unless font supports it)
-- Copy: `Diseño, websites y música bajo una misma frecuencia creativa.`
-- Sub-copy: `Creamos identidades, experiencias digitales y producción audiovisual para negocios, artistas y proyectos con personalidad.`
+- Brand name: `DISCCO!` (**`font-size: clamp(4rem, 14vw, 11rem); line-height: 0.9;`**)
+- Slogan: `conexión creativa` (accent green, Oswald regular — **NOT italic** unless font supports it; **`font-size: clamp(1.5rem, 4vw, 3rem);`**)
+- Copy: `Diseño, websites y música bajo una misma frecuencia creativa.` (**`font-size: clamp(1.1rem, 2.5vw, 1.5rem);`**)
+- Sub-copy: `Creamos identidades...` (body size, max 18px desktop)
 
 **Layout:**
 - Desktop: left text block (60%) + stacked 3 department cards (40%), min-height 720px
@@ -206,7 +208,7 @@ All header nav links scroll to these IDs:
 - Paper background with subtle grain texture
 - Bold acid-green underline under "conexión creativa" (CSS animation on load, 0.6s)
 - One hot-pink micro mark (star or dot) as accent
-- Department cards with hover lift
+- Department cards with hover lift (card title: **`font-size: clamp(1.4rem, 3vw, 2rem);`**)
 
 **Interactions:**
 - Cards lift on hover (`translateY(-3px)`)
@@ -216,7 +218,7 @@ All header nav links scroll to these IDs:
 ### 4.2 DISCCO! CREATIVO Section
 
 **Content:**
-- Section title: `DISCCO! CREATIVO` (Oswald uppercase, 48px desktop / 36px mobile)
+- Section title: `DISCCO! CREATIVO` (Oswald uppercase, **`font-size: clamp(2.4rem, 6vw, 5rem);`**)
 - Section ID: `id="creativo"`
 - Subtitle (Inter, muted taupe)
 - Gallery of 5 portfolio cards
@@ -302,9 +304,10 @@ interface WebShowcase {
   type: string;
   description: string;
   device: 'mobile' | 'desktop' | 'both';
+  mockupType: 'menu-digital' | 'landing' | 'catalogo' | 'brand-hub';
   status: 'demo' | 'live' | 'template';
-  href?: string;        // undefined or string
-  isAvailable: boolean;  // true = live/demo accessible
+  href?: string;
+  isAvailable: boolean;
   bullets: string[];
 }
 ```
@@ -391,17 +394,20 @@ Track 3 — Podcast Cut: Voice Polish   [Podcast / Postproducción]
 
 ```typescript
 const waNumber = process.env.NEXT_PUBLIC_WA_NUM;
-const waHref =
-  waNumber && waNumber !== "TODO_NUMERO"
-    ? `https://wa.me/${waNumber}`
-    : "#";
+const waConfigured = waNumber && waNumber !== "TODO_NUMERO";
+const waHref = waConfigured ? `https://wa.me/${waNumber}` : null;
 ```
 
-- Button always visually available
-- If `waHref === "#"` (TODO state): button is visually normal but `aria-disabled`, no `href` set, title attribute explains `title="WhatsApp no configurado todavía"`
+Rendering:
+- **If configured** (`waHref !== null`): `<a href={waHref} target="_blank" rel="noopener noreferrer" className="...">Escribir por WhatsApp</a>`
+- **If NOT configured** (TODO state): `<button disabled title="WhatsApp no configurado todavía" className="...">Escribir por WhatsApp</button>`
+
+Rules:
+- Never render `href="#"` for the TODO state
+- Never render a fake live-looking link that goes nowhere
+- Label stays "Escribir por WhatsApp" in both states
+- `aria-disabled` on button if used (button is already disabled so standard `disabled` attribute is sufficient
 - Code comment: `// TODO: Replace NEXT_PUBLIC_WA_NUM in .env.local with real WhatsApp number including country code (no + or 00)`
-- Label: "Escribir por WhatsApp"
-- Icon: WhatsApp SVG
 
 ### 4.6 Footer
 
@@ -413,7 +419,17 @@ Diseño, web y música desde Torreón. — location
 © 2025 DISCCO! — Todos los derechos reservados.
 ```
 
-Footer links scroll to same section IDs as header.
+Footer footer links scroll to same section IDs as header.
+
+### 3.6 Footer Year (Dynamic)
+
+Footer year must be dynamic, not hard-coded:
+
+```tsx
+const year = new Date().getFullYear();
+// ...
+© {year} DISCCO! — Todos los derechos reservados.
+```
 
 ---
 
@@ -422,7 +438,7 @@ Footer links scroll to same section IDs as header.
 | Component | States | Notes |
 |-----------|--------|-------|
 | `Header` | default, scrolled (border appears) | Sticky top: 0, 64px desktop / 56px mobile |
-| `MobileMenu` | open, closed | Slide-down panel, NOT fullscreen. Hamburger closes on nav click. Keyboard accessible. |
+| `MobileMenu` | open, closed | Slide-down panel, NOT fullscreen. Keyboard accessible. **Exact close triggers**: Escape closes menu; clicking outside closes menu; clicking a nav item closes menu. Focus returns to hamburger button after closing with Escape. Body scroll locks while menu is open only if dropdown overlaps content significantly. |
 | `Hero` | default | Two layout variants: mobile / desktop |
 | `DepartmentCard` | default, hover | One per department, used in Hero |
 | `SectionIntro` | — | Title + subtitle wrapper, reusable |
@@ -526,6 +542,7 @@ export const webShowcases = [
     type: 'Mobile-first menu',
     description: 'Una carta digital clara para cafés, restaurantes y food trucks. Optimizada para celular.',
     device: 'mobile',
+    mockupType: 'menu-digital',
     status: 'demo',
     href: undefined,
     isAvailable: false,
@@ -537,6 +554,7 @@ export const webShowcases = [
     type: 'Website para negocio local',
     description: 'Página rápida para explicar qué haces, mostrar servicios y mandar clientes a WhatsApp.',
     device: 'both',
+    mockupType: 'landing',
     status: 'template',
     href: undefined,
     isAvailable: false,
@@ -548,6 +566,7 @@ export const webShowcases = [
     type: 'Storefront simple',
     description: 'Catálogo privado para enseñar productos, tomar pedidos y validar ventas sin complicar el sistema.',
     device: 'both',
+    mockupType: 'catalogo',
     status: 'demo',
     href: undefined,
     isAvailable: false,
@@ -559,6 +578,7 @@ export const webShowcases = [
     type: 'Sitio de marca',
     description: 'Sitio principal para organizar proyectos, mostrar trabajo y construir presencia digital.',
     device: 'desktop',
+    mockupType: 'brand-hub',
     status: 'template',
     href: undefined,
     isAvailable: false,
@@ -678,15 +698,26 @@ discco/
 
 | Layer | Choice |
 |-------|--------|
-| Next.js | Latest stable (App Router, `src/` directory) |
+| Next.js | Latest stable with App Router, `src/` directory, ESLint, TypeScript |
 | TypeScript | Strict mode (`strict: true` in tsconfig) |
-| Tailwind CSS | **v3.x** (NOT v4) — classic `tailwind.config.ts` workflow |
+| Tailwind CSS | **v3.x** (NOT v4) — classic `tailwind.config.ts` workflow. After scaffold, run `npm install tailwindcss@^3` to lock to v3 if Next.js installs v4 by default. |
+| package manager | Use npm. `package-lock.json` must be committed — it is the real version lock. |
+| package.json scripts | Must include: `lint` (`next lint`), `typecheck` (`tsc --noEmit`), `build` (`next build`) |
 | CSS theming | CSS variables in `globals.css :root` as single source of truth |
 | Tailwind config | Maps to CSS variables via `var(--discco-*)`, NOT raw hex |
 | Fonts | `next/font/google` — Oswald + Inter |
 | Animations | CSS-only, no framer-motion, no animation libraries |
 | UI components | No shadcn unless explicitly needed |
 | Icons | Inline SVG only |
+
+**New repo setup**:
+```bash
+npx create-next-app@latest --app --typescript --src-dir --eslint --no-tailwind
+cd discco
+npm install tailwindcss@^3 postcss autoprefixer
+npx tailwindcss init -p
+npm install -D @tailwindcss/typography  # only if needed
+```
 
 **Tailwind v4 note**: If Tailwind v4 is installed by default, convert to v3 workflow:
 - Use `tailwind.config.ts` as theme source of truth
@@ -761,6 +792,21 @@ NEXT_PUBLIC_WA_NUM=TODO_NUMERO   # Replace with real WhatsApp number including c
 - [ ] Color contrast verified: accent green (`#B8C46A`) on paper (`#F4EFE5`) passes WCAG AA for large text; verify for small text
 - [ ] All CSS animations respect `prefers-reduced-motion: reduce` via `@media (prefers-reduced-motion: no-preference)` wrapper
 
+### 9.1 Accent Green Contrast Rule
+
+`--discco-accent` (#B8C46A) can fail WCAG AA for small text on light backgrounds.
+
+Rules:
+- **Do NOT use `--discco-accent` for small body text on paper/light backgrounds**
+- For small text on light backgrounds, use `--discco-accent-dk` (#7E8A3F), `--discco-ink`, or `--discco-taupe`
+- `--discco-accent` is safe for:
+  - underlines
+  - borders
+  - large display accents (section titles, hero slogans)
+  - filled pills with dark text only if contrast is verified
+  - active/focus indicators where size is large enough
+- Active/hover states must not rely on color alone — always pair with underline, border, icon state change, or font-weight change
+
 ---
 
 ## 10. Not in Scope (Yet)
@@ -808,13 +854,13 @@ npm run typecheck
 # 3. Production build
 npm run build
 
-# 4. Brand spelling checks (should return ZERO matches for the wrong spellings)
-grep -r "DISCO!" . --exclude-dir=node_modules --exclude-dir=.next
-grep -r "DISCO\." . --exclude-dir=node_modules --exclude-dir=.next
-grep -r "disco\!" . --exclude-dir=node_modules --exclude-dir=.next
-grep -r "conexion creativa" . --exclude-dir=node_modules --exclude-dir=.next
+# 4. Brand spelling checks — scan src/ only (docs contain the wrong spellings as negative examples)
+grep -r "DISCO!" src/ --exclude-dir=node_modules --exclude-dir=.next
+grep -r "DISCO\." src/ --exclude-dir=node_modules --exclude-dir=.next
+grep -r "disco\!" src/ --exclude-dir=node_modules --exclude-dir=.next
+grep -r "conexion creativa" src/ --exclude-dir=node_modules --exclude-dir=.next
 
-# 5. Positive brand check (should find correct instances in src and docs)
+# 5. Positive brand check — can scan src/ and docs/
 grep -r "DISCCO!" src/ docs/
 grep -r "conexión creativa" src/ docs/
 grep -r "DISCCO.DEV" src/ docs/
@@ -822,7 +868,7 @@ grep -r "DISCCO! CREATIVO" src/ docs/
 grep -r "DISCCO! RECORDS" src/ docs/
 ```
 
-All checks must pass. Zero tolerance for DISCO!/DISCO. typos in visible or source code.
+All checks must pass. Zero tolerance for DISCO!/DISCO. typos in source code.
 
 ---
 
@@ -853,3 +899,12 @@ All checks must pass. Zero tolerance for DISCO!/DISCO. typos in visible or sourc
 - [ ] Grep checks for DISCO!/DISCO. typos return zero results
 - [ ] Grep checks for "conexion creativa" (missing accent) return zero results
 - [ ] Correct brand spelling confirmed in: visible UI, data arrays, component comments, SEO metadata, footer
+- [ ] Header translucent background uses valid CSS — `color-mix()` or solid `var()`, NOT `rgba(hex-variable)`
+- [ ] Wrong-brand grep checks scan `src/` only so they do not self-fail on docs negative examples
+- [ ] package-lock.json is committed (real version lock is the lockfile, not the docs)
+- [ ] package.json includes `lint`, `typecheck`, `build` scripts
+- [ ] Footer year is dynamic: `new Date().getFullYear()`, not hard-coded
+- [ ] WhatsApp TODO state renders `<button disabled>`, never `href="#"` or fake live-looking link
+- [ ] webShowcases data uses explicit `mockupType` discriminator field, not string matching
+- [ ] Accent green (`--discco-accent`) is NOT used as small low-contrast text on light backgrounds
+- [ ] Hero and section typography use `clamp()` responsive sizing — no fixed px values for display type
