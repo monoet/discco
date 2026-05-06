@@ -102,9 +102,9 @@ function DepartmentPanel({ department, index }: { department: Department; index:
     <a
       href={department.href}
       className={`
-        group relative grid min-h-[178px] overflow-hidden rounded-[5px] border p-5 transition duration-200
+        group relative grid min-h-[168px] overflow-hidden rounded-[5px] border p-5 transition duration-200
         hover:-translate-y-0.5 hover:border-[var(--discco-ink)]
-        md:min-h-[188px] md:grid-cols-[0.85fr_1.15fr] md:gap-5 md:p-6
+        md:min-h-[164px] md:grid-cols-[minmax(210px,0.82fr)_minmax(320px,1.38fr)] md:gap-7 md:p-5
         ${isDev ? 'border-[rgba(20,17,15,0.24)] bg-[var(--discco-accent-dk)] text-[var(--discco-ink)]' : ''}
         ${isRecords ? 'border-[rgba(251,247,239,0.18)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)]' : ''}
         ${!isDev && !isRecords ? 'border-[var(--discco-line)] bg-[var(--discco-bone)] text-[var(--discco-ink)]' : ''}
@@ -120,9 +120,9 @@ function DepartmentPanel({ department, index }: { department: Department; index:
         }}
       />
 
-      <div className="relative z-10 flex min-h-[132px] flex-col justify-between">
+      <div className="relative z-10 flex min-h-[124px] flex-col justify-between">
         <div>
-          <div className="mb-5 flex items-center gap-3">
+          <div className="mb-4 flex items-center gap-3">
             <span className={`font-display text-2xl leading-none ${isRecords ? 'text-[var(--discco-pink)]' : 'text-[var(--discco-accent-dk)]'}`}>
               {String(index + 1).padStart(2, '0')}
             </span>
@@ -130,13 +130,13 @@ function DepartmentPanel({ department, index }: { department: Department; index:
           </div>
           <h2
             className="font-display uppercase leading-[0.88] tracking-[-0.015em]"
-            style={{ fontSize: 'clamp(2.05rem, 4vw, 3.2rem)' }}
+            style={{ fontSize: 'clamp(2rem, 3vw, 2.9rem)' }}
           >
             {department.name}
           </h2>
           <span className={`mt-4 block h-[3px] w-14 ${isRecords ? 'bg-[var(--discco-pink)]' : 'bg-[var(--discco-bone)]'} ${!isDev && !isRecords ? 'bg-[var(--discco-pink)]' : ''}`} />
         </div>
-        <p className={`mt-5 max-w-[24ch] font-body text-sm leading-snug md:text-[15px] ${isRecords ? 'text-[var(--discco-bone)]' : 'text-[var(--discco-ink)]'}`}>
+        <p className={`mt-4 max-w-[26ch] font-body text-sm leading-snug md:text-[15px] ${isRecords ? 'text-[var(--discco-bone)]' : 'text-[var(--discco-ink)]'}`}>
           {department.tagline}
         </p>
       </div>
@@ -168,9 +168,9 @@ export default function Hero() {
       <span aria-hidden="true" className="absolute right-[43%] top-20 hidden h-16 w-px bg-[var(--discco-ink)] md:block" />
       <span aria-hidden="true" className="absolute right-[42.1%] top-[5.9rem] hidden h-px w-16 bg-[var(--discco-ink)] md:block" />
 
-      <div className="relative z-10 mx-auto max-w-content px-5 pb-14 pt-12 md:px-12 md:pb-14 md:pt-16">
-        <div className="grid items-center gap-8 md:min-h-[calc(100svh-4rem)] md:grid-cols-[minmax(0,0.58fr)_minmax(360px,0.42fr)] md:gap-10">
-          <div className="relative">
+      <div className="relative z-10 mx-auto max-w-[1600px] px-5 pb-14 pt-12 md:px-10 md:pb-14 md:pt-16 lg:px-14">
+        <div className="grid items-center gap-8 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,0.54fr)_minmax(560px,0.46fr)] lg:gap-20">
+          <div className="relative min-w-0">
             <div className="mb-8 hidden items-center gap-4 md:flex">
               <span className="font-display text-xs uppercase tracking-[0.18em]">EST. 2016</span>
               <span className="h-px w-24 bg-[var(--discco-line)]" />
@@ -178,8 +178,8 @@ export default function Hero() {
             </div>
 
             <h1
-              className="discco-hero-title relative font-display uppercase leading-[0.82] text-[var(--discco-ink)]"
-              style={{ fontSize: 'clamp(6rem, 16vw, 14rem)', letterSpacing: '-0.04em' }}
+              className="discco-hero-title relative max-w-full overflow-hidden font-display uppercase leading-[0.82] text-[var(--discco-ink)]"
+              style={{ fontSize: 'clamp(6rem, 12.6vw, 12.8rem)', letterSpacing: '-0.04em' }}
             >
               DISCCO!
             </h1>
@@ -235,7 +235,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4 md:gap-5">
+          <div className="relative z-20 flex min-w-0 flex-col gap-5 md:gap-7 lg:pl-2">
             {departments.map((department, index) => (
               <DepartmentPanel key={department.id} department={department} index={index} />
             ))}
