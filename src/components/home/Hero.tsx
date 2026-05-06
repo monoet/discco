@@ -6,79 +6,83 @@ const recordWaveBars = [
   31, 45, 19, 34, 26, 42, 24, 36, 18, 30, 41, 22,
 ];
 
-function DepartmentMotif({ id }: { id: Department['id'] }) {
-  if (id === 'creativo') {
-    return (
-      <div className="relative h-full min-h-[128px] overflow-hidden 2xl:min-h-[154px]">
-        <div className="absolute left-0 top-0 h-[70px] w-[58%] bg-[var(--discco-ink)] p-4 text-[var(--discco-bone)] 2xl:h-[84px]">
-          <span className="font-display text-xl uppercase leading-none">DISCCO!</span>
+function CreativoMiniGallery() {
+  return (
+    <div className="relative h-[140px] w-full max-w-[300px] overflow-hidden md:h-[178px] md:max-w-[520px]">
+      <div className="grid h-full grid-cols-12 grid-rows-6 gap-2.5">
+        <div className="relative col-span-7 row-span-4 bg-[var(--discco-ink)] p-4 text-[var(--discco-bone)]">
+          <span className="font-display text-2xl uppercase leading-none">DISCCO!</span>
           <span className="absolute bottom-4 right-4 text-[var(--discco-pink)]">✦</span>
         </div>
-        <div className="absolute right-0 top-0 h-[70px] w-[36%] bg-[var(--discco-bone)] p-3 text-[var(--discco-ink)] 2xl:h-[84px]">
-          <span className="block max-w-[5.5ch] font-display text-[1.65rem] uppercase leading-[0.82] 2xl:text-3xl">No rules</span>
-          <span className="absolute right-2 top-2 h-6 w-1.5 bg-[var(--discco-pink)]" />
+
+        <div className="relative col-span-3 row-span-4 bg-[var(--discco-bone)] p-3 text-[var(--discco-ink)]">
+          <span className="block h-2 w-12 bg-[var(--discco-ink)]" />
+          <span className="mt-3 block h-2 w-9 bg-[var(--discco-ink)]" />
+          <span className="mt-3 block h-2 w-14 bg-[var(--discco-pink)]" />
         </div>
-        <div className="absolute bottom-0 left-0 h-[50px] w-[58%] bg-[var(--discco-taupe)] opacity-[0.72] 2xl:h-[62px]" />
-        <div className="absolute bottom-0 right-[25%] h-[50px] w-[28%] bg-[var(--discco-charcoal)] 2xl:h-[62px]">
+
+        <div className="relative col-span-2 row-span-6 bg-[var(--discco-accent)]">
+          <span className="absolute inset-x-3 top-1/2 h-px bg-[var(--discco-ink)]" />
+          <span className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--discco-ink)]" />
+          <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--discco-ink)]" />
+        </div>
+
+        <div className="col-span-7 row-span-2 bg-[var(--discco-taupe)] opacity-[0.72]" />
+
+        <div className="relative col-span-3 row-span-2 bg-[var(--discco-charcoal)]">
           <span className="absolute inset-3 rounded-full border border-[var(--discco-accent-dk)]" />
           <span className="absolute left-1/2 top-1/2 h-px w-12 -translate-x-1/2 bg-[var(--discco-accent)]" />
           <span className="absolute left-1/2 top-1/2 h-10 w-px -translate-y-1/2 bg-[var(--discco-accent)]" />
         </div>
-        <div className="absolute bottom-0 right-0 h-[50px] w-[20%] bg-[var(--discco-accent)] 2xl:h-[62px]">
-          <span className="absolute inset-x-3 top-1/2 h-px bg-[var(--discco-ink)]" />
-          <span className="absolute left-1/2 top-1/2 h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--discco-ink)]" />
-          <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--discco-ink)]" />
-        </div>
-        <span className="absolute right-1 top-[78px] font-display text-lg uppercase leading-[0.82] text-[var(--discco-ink)] 2xl:top-[94px] 2xl:text-xl">
-          Make<br />meaning
-        </span>
-        <span className="absolute bottom-2 right-2 text-lg text-[var(--discco-pink)]">×</span>
       </div>
-    );
-  }
+      <span className="absolute bottom-2 right-7 text-lg text-[var(--discco-pink)]">×</span>
+    </div>
+  );
+}
 
-  if (id === 'dev') {
-    return (
-      <div className="h-full min-h-[128px] overflow-hidden border border-[var(--discco-ink)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)] 2xl:min-h-[154px]">
-        <div className="flex h-7 items-center justify-between border-b border-[rgba(251,247,239,0.22)] px-3">
-          <span className="font-display text-[10px] uppercase tracking-[0.12em]">DISCCO.DEV</span>
-          <span className="flex gap-1">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-accent)]" />
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-taupe)]" />
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-bone)]" />
+function DevMiniBrowser() {
+  return (
+    <div className="h-[150px] w-full max-w-[300px] overflow-hidden border border-[var(--discco-ink)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)] md:h-[176px] md:max-w-[520px]">
+      <div className="flex h-8 items-center justify-between border-b border-[rgba(251,247,239,0.22)] px-4">
+        <span className="font-display text-[10px] uppercase tracking-[0.12em]">DISCCO.DEV</span>
+        <span className="flex gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-accent)]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-taupe)]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--discco-bone)]" />
+        </span>
+      </div>
+      <div className="grid h-[calc(100%-2rem)] grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] gap-4 p-5">
+        <div className="min-w-0">
+          <span className="block max-w-[9ch] font-display text-[1.35rem] uppercase leading-[0.88] md:text-[1.75rem]">
+            Diseño que funciona.
+          </span>
+          <span className="mt-3 block h-1.5 w-20 bg-[var(--discco-accent)]" />
+          <span className="mt-4 block font-display text-[10px] uppercase tracking-[0.16em]">
+            Ver proyectos →
           </span>
         </div>
-        <div className="grid h-[calc(100%-1.75rem)] grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] gap-4 p-4">
-          <div className="min-w-0">
-            <span className="block max-w-[9ch] font-display text-[1.65rem] uppercase leading-[0.88]">
-              Diseño que funciona.
-            </span>
-            <span className="mt-3 block h-1.5 w-20 bg-[var(--discco-accent)]" />
-            <span className="mt-4 block font-display text-[10px] uppercase tracking-[0.16em]">
-              Ver proyectos →
-            </span>
-          </div>
-          <div className="relative min-w-0 overflow-hidden border-l border-[rgba(251,247,239,0.25)] pl-4">
-            <span className="absolute left-[calc(50%+0.5rem)] top-1/2 h-16 w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-[var(--discco-taupe)]" />
-            <span className="absolute left-[calc(50%+0.5rem)] top-1/2 h-px w-[86%] -translate-x-1/2 bg-[var(--discco-taupe)]" />
-            <span className="absolute left-[calc(50%+0.5rem)] top-1/2 h-16 w-px -translate-y-1/2 bg-[var(--discco-taupe)]" />
-            <span className="absolute inset-x-5 top-6 h-px bg-[var(--discco-taupe)] opacity-70" />
-            <span className="absolute inset-x-5 bottom-6 h-px bg-[var(--discco-taupe)] opacity-70" />
-            <span className="absolute right-1 top-1 font-display text-lg text-[var(--discco-accent)]">&lt;/&gt;</span>
-          </div>
+        <div className="relative min-w-0 overflow-hidden border-l border-[rgba(251,247,239,0.25)] pl-4">
+          <span className="absolute left-[calc(50%+0.5rem)] top-1/2 h-16 w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-[var(--discco-taupe)]" />
+          <span className="absolute left-[calc(50%+0.5rem)] top-1/2 h-px w-[86%] -translate-x-1/2 bg-[var(--discco-taupe)]" />
+          <span className="absolute left-[calc(50%+0.5rem)] top-1/2 h-16 w-px -translate-y-1/2 bg-[var(--discco-taupe)]" />
+          <span className="absolute inset-x-5 top-6 h-px bg-[var(--discco-taupe)] opacity-70" />
+          <span className="absolute inset-x-5 bottom-6 h-px bg-[var(--discco-taupe)] opacity-70" />
+          <span className="absolute right-1 top-1 font-display text-lg text-[var(--discco-accent)]">&lt;/&gt;</span>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
+function RecordsMiniPlayer() {
   return (
-      <div className="h-full min-h-[128px] overflow-hidden border border-[rgba(251,247,239,0.24)] bg-[rgba(20,17,15,0.36)] text-[var(--discco-bone)] 2xl:min-h-[154px]">
-      <div className="flex h-8 items-center justify-between border-b border-[rgba(251,247,239,0.2)] px-3">
+    <div className="h-[154px] w-full max-w-[300px] overflow-hidden border border-[rgba(251,247,239,0.24)] bg-[rgba(20,17,15,0.38)] text-[var(--discco-bone)] md:h-[184px] md:max-w-[520px]">
+      <div className="flex h-8 min-w-0 items-center justify-between gap-4 border-b border-[rgba(251,247,239,0.2)] px-4">
         <span className="font-display text-xs uppercase tracking-[0.2em]">A DISCCO! RECORDS</span>
-        <span className="font-display text-[10px] uppercase tracking-[0.18em] text-[var(--discco-pink)]">Play</span>
+        <span className="shrink-0 font-display text-[10px] uppercase tracking-[0.18em] text-[var(--discco-pink)]">Play</span>
       </div>
-      <div className="p-4 pt-3">
-        <div className="flex h-8 items-center gap-[2px] border-b border-[rgba(251,247,239,0.14)] pb-2" aria-hidden="true">
+      <div className="p-4">
+        <div className="flex h-10 items-center gap-[2px] border-b border-[rgba(251,247,239,0.14)] pb-3" aria-hidden="true">
           {recordWaveBars.map((height, index) => (
             <span
               key={index}
@@ -87,7 +91,7 @@ function DepartmentMotif({ id }: { id: Department['id'] }) {
             />
           ))}
         </div>
-        <div className="mt-3 grid min-w-0 grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-1 font-body text-[10px] uppercase tracking-[0.08em]">
+        <div className="mt-4 grid min-w-0 grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-1.5 font-body text-[10px] uppercase tracking-[0.08em]">
           <span className="truncate"><span className="mr-2 text-[var(--discco-accent)]">1</span>Intro</span>
           <span className="text-[var(--discco-accent)]">01:12</span>
           <span className="truncate"><span className="mr-2 text-[var(--discco-accent)]">2</span>Frecuencia creativa</span>
@@ -100,6 +104,12 @@ function DepartmentMotif({ id }: { id: Department['id'] }) {
   );
 }
 
+function DepartmentVisual({ id }: { id: Department['id'] }) {
+  if (id === 'creativo') return <CreativoMiniGallery />;
+  if (id === 'dev') return <DevMiniBrowser />;
+  return <RecordsMiniPlayer />;
+}
+
 function DepartmentPanel({ department, index }: { department: Department; index: number }) {
   const isDev = department.id === 'dev';
   const isRecords = department.id === 'records';
@@ -108,10 +118,10 @@ function DepartmentPanel({ department, index }: { department: Department; index:
     <a
       href={department.href}
       className={`
-        group relative grid min-h-[188px] overflow-hidden rounded-[5px] border p-5 transition duration-200
+        group relative block w-full overflow-hidden rounded-[5px] border p-6 transition duration-200
         hover:-translate-y-0.5 hover:border-[var(--discco-ink)]
-        md:h-[188px] md:grid-cols-[minmax(220px,0.78fr)_minmax(300px,1.42fr)] md:items-stretch md:gap-6 md:p-6
-        2xl:h-[216px] 2xl:grid-cols-[minmax(250px,0.8fr)_minmax(360px,1.4fr)] 2xl:gap-7
+        md:h-[264px] md:p-8
+        xl:h-[260px] xl:p-9
         ${isDev ? 'border-[rgba(20,17,15,0.24)] bg-[var(--discco-accent-dk)] text-[var(--discco-ink)]' : ''}
         ${isRecords ? 'border-[rgba(251,247,239,0.18)] bg-[var(--discco-charcoal)] text-[var(--discco-bone)]' : ''}
         ${!isDev && !isRecords ? 'border-[var(--discco-line)] bg-[var(--discco-bone)] text-[var(--discco-ink)]' : ''}
@@ -127,8 +137,8 @@ function DepartmentPanel({ department, index }: { department: Department; index:
         }}
       />
 
-      <div className="relative z-10 flex min-h-[142px] flex-col justify-between md:min-h-0">
-        <div>
+      <div className="relative z-10 grid h-full gap-6 md:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] md:items-center md:gap-8">
+        <div className="flex min-w-0 flex-col justify-center">
           <div className="mb-4 flex items-center gap-3">
             <span className={`font-display text-2xl leading-none ${isRecords ? 'text-[var(--discco-pink)]' : isDev ? 'text-[var(--discco-ink)]' : 'text-[var(--discco-accent-dk)]'}`}>
               {String(index + 1).padStart(2, '0')}
@@ -137,19 +147,19 @@ function DepartmentPanel({ department, index }: { department: Department; index:
           </div>
           <h2
             className="font-display uppercase leading-[0.88] tracking-[-0.015em]"
-            style={{ fontSize: 'clamp(2rem, 3vw, 2.9rem)' }}
+            style={{ fontSize: 'clamp(2rem, 2.6vw, 3rem)' }}
           >
             {department.name}
           </h2>
           <span className={`mt-4 block h-[3px] w-16 ${isRecords ? 'bg-[var(--discco-pink)]' : isDev ? 'bg-[var(--discco-bone)]' : 'bg-[var(--discco-pink)]'}`} />
+          <p className={`mt-5 max-w-[27ch] font-body text-sm leading-snug md:text-[15px] ${isRecords ? 'text-[var(--discco-bone)]' : 'text-[var(--discco-ink)]'}`}>
+            {department.tagline}
+          </p>
         </div>
-        <p className={`mt-4 max-w-[26ch] font-body text-sm leading-snug md:text-[15px] ${isRecords ? 'text-[var(--discco-bone)]' : 'text-[var(--discco-ink)]'}`}>
-          {department.tagline}
-        </p>
-      </div>
 
-      <div className="relative z-10 mt-5 min-w-0 overflow-hidden border border-[rgba(20,17,15,0.08)] bg-[rgba(251,247,239,0.1)] p-3 md:mt-0">
-        <DepartmentMotif id={department.id} />
+        <div className="relative flex min-h-[170px] min-w-0 items-center justify-center overflow-hidden border border-[rgba(20,17,15,0.08)] bg-[rgba(251,247,239,0.1)] p-4 md:h-full md:min-h-0">
+          <DepartmentVisual id={department.id} />
+        </div>
       </div>
     </a>
   );
