@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ============================================
    DISCCO! Design System — CSS Variables (Source of Truth)
    ============================================ */

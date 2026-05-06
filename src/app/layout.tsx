@@ -42,7 +42,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${oswald.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body className={`${inter.variable} ${oswald.variable} bg-discco-paper text-discco-ink antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
